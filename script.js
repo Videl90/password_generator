@@ -27,19 +27,24 @@ var printPass = "your password";
 function generatePassword(){
   var userClick = prompt("Choose the length (more than 8 characters, less than 128)");
   console.log(userClick); 
-  if (userClick > 8) {
+  if (userClick >= 8 && userClick <= 128) {
     console.log("ok lenght");
     var ran = Math.floor(Math.random() * lowerCase.length);
     console.log(ran);
     console.log(lowerCase[ran]);
-
+  
   }
   else {
     alert("Try again :)");
   }
-
-  return printPass;
 }
+
+generatePassword();
+
+
+
+
+
 
 
 var wantUppercase = confirm("Do you want to include uppercase letters?");

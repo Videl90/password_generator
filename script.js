@@ -57,7 +57,7 @@ function generatePassword(){
       }
 
       if(specialChar === true){
-        availableChar = availableChar.concat(arrSpecialChar); 
+        availableChar = availableChar.concat(arrSpecialChar);
       }
 
       if(num === true){
@@ -70,53 +70,6 @@ function generatePassword(){
         randomPassword = randomPassword + randomLower;
       }
       return randomPassword;
-
-    
-  /*     //lowerCase loop//
-      if (lowerCase === true) {
-          var randomLower = arrLowerCase[Math.floor(Math.random() * arrLowerCase.length)];
-          console.log(randomLower);
-          resultPass = resultPass.concat(randomLower);
-          //console.log(resultPass);
-      }
-       
-      //upperCase loop//
-      if (upperLetters === true) {
-        for (var i = 0; i < 26; i++) {
-          var randomUpper = arrUpperCase[Math.floor(Math.random() * arrUpperCase.length)];
-          console.log(randomUpper);
-        }
-        resultPass = resultPass.concat(randomUpper);
-        //console.log(resultPass);
-      }  
-
-      //specialChar loop//
-      if (specialChar === true) {
-        for (var i = 0; i < 29; i++) {
-          var randomChar = arrSpecialChar[Math.floor(Math.random() * arrSpecialChar.length)];
-          console.log(randomChar)
-        }
-        resultPass = resultPass.concat(randomChar);
-        //console.log(resultPass);
-      }
-
-      //numbers loop//
-      if (num === true) {
-        for (var i = 0; i < 10; i++) {
-          var randomNum = arrNum[Math.floor(Math.random() * arrNum.length)];
-          console.log(randomNum);
-        }
-        resultPass = resultPass.concat(randomNum);
-        //console.log(resultPass);
-      }
-
-    resultPass = resultPass.concat(randomNum + randomChar + randomLower + randomUpper);
-
-      for (var i = 0; i < passLength; i++){
-        randomPassword = randomPassword + resultPass[Math.floor(Math.random() * passLength.length)];
-      } */
-
-
 }
 
 

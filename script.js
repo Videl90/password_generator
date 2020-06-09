@@ -7,7 +7,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button//
@@ -15,69 +14,133 @@ generateBtn.addEventListener("click", writePassword);
 
 //Arrays//
 
-var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"];
-var upperLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var specialChar = ["!", "#", "$", "%", "&", "'", "(", ")", "=", "*", "+", ",", "-", ".", "/", ";", "<", ">", "?", "@", "[", "]", "^", "_", "´", "{", "}", "|", "~"];
+var arrLowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"];
+var arrUpperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var arrNum = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var arrSpecialChar = ["!", "#", "$", "%", "&", "'", "(", ")", "=", "*", "+", ",", "-", ".", "/", ";", "<", ">", "?", "@", "[", "]", "^", "_", "´", "{", "}", "|", "~"];
 
 //Temporary Password//
-var tempPass = "your password";
+var randomPassword ="";
+var availableChar = [];
+var passLength;
 
 //This is the password Generator//
 function generatePassword(){
-      generateBtn = prompt("Choose the length (more than 8 characters, less than 128)"); //The user chooses the lenght//
-      console.log(generateBtn); //prints the users choice//
-      if (generateBtn >= 8 && generateBtn <= 128) { //Delimitates the users choice//
+      randomPassword = "";
+      passLength = prompt("Choose the length (more than 8 characters, less than 128)"); //The user chooses the lenght//
+      console.log(passLength); //prints the users choice//
+      if (passLength >= 8 && passLength <= 128) { //Delimitates the users choice//
         console.log("ok lenght");
       
       }
       else {
         alert("Try again :)"); //if the user choose a number that doesn't relate with the parameter, show this alert"
-      }
+        return
+      }  
 
-  
       lowerCase = confirm("Do you want to include lowercase letters?"); //Lower case choice//
       upperLetters = confirm("Do you want to include uppercase letters?"); //Upper case choice//
       num = confirm("Do you want to include numbers?"); //number choice//
       specialChar = confirm("Do you want to include special characters?"); //special characters choice// 
 
-      //lowerCase loop//
-      if (lowerCase === true);{
-        for (var i = 0; i < 26; i++) {
-          var ran = Math.floor(Math.random() * lowerCase.length);
-          console.log(lowerCase[ran]);
-        } 
+      if(lowerCase === false && upperLetters === false && num === false && specialChar === false){
+        alert("You must choose at least one option");
+        return
       }
-      
+
+      if(lowerCase === true){
+        availableChar = availableChar.concat(arrLowerCase); 
+      }
+
+      if(upperLetters === true){
+        availableChar = availableChar.concat(arrUpperCase); 
+      }
+
+      if(specialChar === true){
+        availableChar = availableChar.concat(arrSpecialChar); 
+      }
+
+      if(num === true){
+        availableChar = availableChar.concat(arrNum); 
+      }
+
+
+      for (var i = 0; i < passLength; i++ ) {
+        var randomLower = availableChar[Math.floor(Math.random() * availableChar.length)];
+        randomPassword = randomPassword + randomLower;
+      }
+      return randomPassword;
+
+    
+  /*     //lowerCase loop//
+      if (lowerCase === true) {
+          var randomLower = arrLowerCase[Math.floor(Math.random() * arrLowerCase.length)];
+          console.log(randomLower);
+          resultPass = resultPass.concat(randomLower);
+          //console.log(resultPass);
+      }
+       
       //upperCase loop//
-      if (upperLetters === true);{
+      if (upperLetters === true) {
         for (var i = 0; i < 26; i++) {
-          var ran = Math.floor(Math.random() * upperLetters.length);
-          console.log(upperLetters[ran]);
+          var randomUpper = arrUpperCase[Math.floor(Math.random() * arrUpperCase.length)];
+          console.log(randomUpper);
         }
+        resultPass = resultPass.concat(randomUpper);
+        //console.log(resultPass);
       }  
 
       //specialChar loop//
-      if (specialChar === true);{
+      if (specialChar === true) {
         for (var i = 0; i < 29; i++) {
-          var ran = Math.floor(Math.random() * specialChar.length);
-          console.log(specialChar[ran]);
+          var randomChar = arrSpecialChar[Math.floor(Math.random() * arrSpecialChar.length)];
+          console.log(randomChar)
         }
+        resultPass = resultPass.concat(randomChar);
+        //console.log(resultPass);
       }
 
       //numbers loop//
-      if (num === true);{
+      if (num === true) {
         for (var i = 0; i < 10; i++) {
-          var ran = Math.floor(Math.random() * num.length);
-          console.log(num[ran]);
+          var randomNum = arrNum[Math.floor(Math.random() * arrNum.length)];
+          console.log(randomNum);
         }
+        resultPass = resultPass.concat(randomNum);
+        //console.log(resultPass);
       }
+
+    resultPass = resultPass.concat(randomNum + randomChar + randomLower + randomUpper);
+
+      for (var i = 0; i < passLength; i++){
+        randomPassword = randomPassword + resultPass[Math.floor(Math.random() * passLength.length)];
+      } */
+
 
 }
 
+
 //Calling the functions//
-generateBtn.addEventListener("click", writePassword);
-generatePassword();
+
+
+
+
+
+/*When the page loads, prompts appear:
+  lower case
+  upper case
+  numbers 
+  special characters
+
+if lower case = true ----> loop and math random through that array.
+
+if else upper case = true ----> loop and math random through that array.
+
+if else numbers ----> ----> loop and math random through that array.
+
+if else special characters ----> loop and math random through that array.
+
+else ---> You need to choose and option.
 
 
 
